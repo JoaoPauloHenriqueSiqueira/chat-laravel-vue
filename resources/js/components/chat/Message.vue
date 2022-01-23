@@ -1,6 +1,6 @@
 <template>
     <div class="message">
-        <b>{{ message.user.name }}:</b> {{ message.body }}  
+        <b>({{ message.id }}){{ message.user.name }}:</b> {{ message.body }}  
     </div>
 </template>
 

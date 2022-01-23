@@ -29,5 +29,11 @@ export default {
             .catch(() => console.log("error 2"))
         }
     },
-    getters:{}
+    getters:{
+        messages(state){
+            return _.orderBy(state.messages, 'id', 'desc')
+        }
+    }
 }
+
+
