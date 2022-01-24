@@ -5307,7 +5307,6 @@ __webpack_require__.r(__webpack_exports__);
       })["finally"](function () {
         return _this.loading = false;
       });
-      this.$store.dispatch('listMessage');
     }
   },
   components: {
@@ -5373,13 +5372,33 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.$store.dispatch('listMessage')["finally"](function () {
-        return _this.loading = false;
+        _this.loading = false;
+
+        _this.scrollMessages();
       });
+    },
+    scrollMessages: function scrollMessages() {
+      var _this2 = this;
+
+      setTimeout(function () {
+        // this.$refs.messages.scrollTo(0,this.$refs.messages.scrollHeight)
+        _this2.$refs.messages.scroll({
+          top: _this2.$refs.messages.scrollHeight,
+          "let": 0,
+          behavior: 'smooth'
+        });
+      }, 100);
+    }
+  },
+  watch: {
+    messages: function messages() {
+      this.scrollMessages();
     }
   },
   computed: {
     messages: function messages() {
-      return this.$store.state.chat.messages;
+      // return this.$store.state.chat.messages;
+      return this.$store.getters.messages;
     }
   },
   created: function created() {
@@ -5517,7 +5536,11 @@ __webpack_require__.r(__webpack_exports__);
       });
     }
   },
-  getters: {}
+  getters: {
+    messages: function messages(state) {
+      return _.orderBy(state.messages, 'id', 'asc');
+    }
+  }
 });
 
 /***/ }),
@@ -10665,7 +10688,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.center-left[data-v-708f0ef0]{}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.messages[data-v-708f0ef0]{\n  height: 400px;\n  max-height: 400px;\n  overflow-x: hidden;\n  overflow-y:auto;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -29496,7 +29519,11 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "message" }, [
-    _c("b", [_vm._v(_vm._s(_vm.message.user.name) + ":")]),
+    _c("b", [
+      _vm._v(
+        "(" + _vm._s(_vm.message.id) + ")" + _vm._s(_vm.message.user.name) + ":"
+      ),
+    ]),
     _vm._v(" " + _vm._s(_vm.message.body) + "  \n"),
   ])
 }
@@ -29525,7 +29552,7 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "messages" },
+    { ref: "messages", staticClass: "messages" },
     [
       _c("grid-loader", { attrs: { loading: _vm.loading, color: "#157347" } }),
       _vm._v(" "),

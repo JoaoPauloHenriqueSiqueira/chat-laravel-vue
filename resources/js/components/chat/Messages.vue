@@ -1,5 +1,5 @@
 <template>
-  <div class="messages">
+  <div class="messages" ref="messages">
         <grid-loader :loading="loading" :color="'#157347'"  ></grid-loader>
         <message 
           v-for="message in messages" :key="message.id" :message="message">
@@ -18,7 +18,26 @@ export default({
   },
   methods:{
     loadMessages(){
-      this.$store.dispatch('listMessage').finally(() => this.loading = false)
+      this.$store.dispatch('listMessage')
+                  .finally(() => {
+                    this.loading = false
+                    this.scrollMessages()
+                  })  
+    },
+    scrollMessages(){
+      setTimeout(() =>{
+      // this.$refs.messages.scrollTo(0,this.$refs.messages.scrollHeight)
+      this.$refs.messages.scroll({
+        top:this.$refs.messages.scrollHeight,
+        let:0,
+        behavior:'smooth'
+      })
+      },100)
+    }
+  },
+  watch:{
+    messages(){
+      this.scrollMessages()
     }
   },
   computed: {
@@ -41,6 +60,5 @@ export default({
   max-height: 400px;
   overflow-x: hidden;
   overflow-y:auto;
-  
 }
 </style>

@@ -34,10 +34,9 @@ export default ({
           if(!this.body || this.body.trim() == '' || this.loading){
             return;
           }
+
         this.loading = true;
         this.$store.dispatch("storeMessage", { body: this.body }).then(() => this.body = '').finally(() => this.loading = false)
-        this.$store.dispatch('listMessage');
-
         }
     },
     components: {
