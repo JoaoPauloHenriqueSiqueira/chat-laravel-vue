@@ -13,3 +13,10 @@
     </div>
 
 @endsection
+
+<style>
+
+body{
+     background: url("{{ asset('imgs/background.png') }}") 
+}
+</style>
