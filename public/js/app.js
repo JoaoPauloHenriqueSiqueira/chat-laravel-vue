@@ -5274,9 +5274,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -5327,6 +5324,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
 //
 //
 //
@@ -10677,7 +10675,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.float-left[data-v-08f91694]{float: left;}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.float-left[data-v-08f91694] {\n    float: left;\n}\ntextarea[data-v-08f91694] {\n    width: 700px;\n    border-radius: 1px solid;\n    padding: 6px;\n    max-width: 700px;\n    float: left;\n}\nbutton[data-v-08f91694]{\n    margin: 15px;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -10701,7 +10699,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.chat-mesage[data-v-ca0fb00a] {\n    float:left;\n    width:100%;\n    margin:10px 0;\n}\n.chat-info[data-v-ca0fb00a] {}\n.chat-img[data-v-ca0fb00a] {\n    float:left;\n}\n.chat-img img[data-v-ca0fb00a] {\n    max-width: 60px;\n    border-radius: 100%;\n    border: 1px solid #FFF;\n}\n.message[data-v-ca0fb00a] {\n    background:#fff;\n    padding:6px;\n    border-radius: 5px;\n    position:relative;\n    margin:32px 14px 0 76px;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.chat-mesage[data-v-ca0fb00a] {\n    float: left;\n    width: 100%;\n    margin: 10px 0;\n}\n.chat-info[data-v-ca0fb00a] {\n    float: left;\n    width: 100%;\n}\n.chat-info span[data-v-ca0fb00a] {\n    float: right;\n}\n.chat-img[data-v-ca0fb00a] {\n    float: left;\n}\n.chat-img img[data-v-ca0fb00a] {\n    max-width: 60px;\n    border-radius: 100%;\n    border: 1px solid #FFF;\n}\n.message[data-v-ca0fb00a] {\n    background: #fff;\n    float: left;\n    padding: 8px;\n    border-radius: 4px;\n    position: relative;\n    margin: 10px 14px 0 8px;\n    width: -webkit-fit-content;\n    width: -moz-fit-content;\n    width: fit-content;\n}\n.message[data-v-ca0fb00a]:before {\n    position: absolute;\n    right: 100%;\n    top: 15px;\n    border: solid transparent;\n    border-right-color: #ffff;\n    content: ' ';\n    height: 0;\n    width: 0;\n    pointer-events: none;\n    border-width: 6px;\n    margin-top: -8px;\n}\n.message.owner[data-v-ca0fb00a] {\n    background: #dcf8c6;\n}\n.message.owner[data-v-ca0fb00a]:before {\n    border-right-color: #dcf8c6;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -10725,7 +10723,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.messages[data-v-708f0ef0]{\n  height: 400px;\n  max-height: 400px;\n  overflow-x: hidden;\n  overflow-y:auto;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.messages[data-v-708f0ef0]{\n  height: 400px;\n  max-height: 400px;\n  overflow-x: hidden;\n  overflow-y:auto;\n}\n.scroll[data-v-708f0ef0]::-webkit-scrollbar-track\n{\n\t-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);\n\tborder-radius: 10px;\n\tbackground-color: #F5F5F5;\n}\n.scroll[data-v-708f0ef0]::-webkit-scrollbar\n{\n\twidth: 12px;\n\tbackground-color: #F5F5F5;\n}\n.scroll[data-v-708f0ef0]::-webkit-scrollbar-thumb\n{\n\tborder-radius: 10px;\n\t-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);\n\tbackground-color: #D62929;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -29525,32 +29523,27 @@ var render = function () {
     [
       _c("messages"),
       _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("textarea", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.body,
-              expression: "body",
-            },
-          ],
-          staticClass: "form-control",
-          attrs: { placeholder: "Sua mensagem" },
-          domProps: { value: _vm.body },
-          on: {
-            keydown: _vm.keydownMessage,
-            input: function ($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.body = $event.target.value
-            },
+      _c("textarea", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.body,
+            expression: "body",
           },
-        }),
-      ]),
-      _vm._v(" "),
-      _c("br"),
+        ],
+        attrs: { placeholder: "Sua mensagem" },
+        domProps: { value: _vm.body },
+        on: {
+          keydown: _vm.keydownMessage,
+          input: function ($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.body = $event.target.value
+          },
+        },
+      }),
       _vm._v(" "),
       _c(
         "button",
@@ -29569,7 +29562,7 @@ var render = function () {
             staticClass: "float-left",
             attrs: { loading: _vm.loading, color: "#FFF", size: "8px" },
           }),
-          _vm._v("\n      Enviar"),
+          _vm._v("\n        Enviar\n    "),
         ],
         1
       ),
@@ -29602,18 +29595,14 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "chat-message" }, [
     _c("div", { staticClass: "chat-info" }, [
-      _vm._v(
-        "\n        " +
-          _vm._s(_vm.message.created_at) +
-          " - " +
-          _vm._s(_vm.message.user.name) +
-          "\n    "
-      ),
+      _c("b", [_vm._v(_vm._s(_vm.message.user.name) + " ")]),
+      _vm._v(" "),
+      _c("span", [_vm._v(" " + _vm._s(_vm.message.created_at) + " ")]),
     ]),
     _vm._v(" "),
     _vm._m(0),
     _vm._v(" "),
-    _c("div", { staticClass: "message" }, [
+    _c("div", { class: ["message", { owner: _vm.message.owner }] }, [
       _vm._v("\n        " + _vm._s(_vm.message.body) + "\n    "),
     ]),
   ])
@@ -29654,7 +29643,7 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { ref: "messages", staticClass: "messages" },
+    { ref: "messages", staticClass: "messages scroll" },
     [
       _c("grid-loader", { attrs: { loading: _vm.loading, color: "#157347" } }),
       _vm._v(" "),

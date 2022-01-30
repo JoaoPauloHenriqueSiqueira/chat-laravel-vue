@@ -1,14 +1,11 @@
 <template>
     <div>
         <messages></messages>
-        <div class="form-group">
-            <textarea @keydown="keydownMessage" v-model="body" placeholder="Sua mensagem" class="form-control"></textarea>
-        </div>
-        <br>
+        <textarea @keydown="keydownMessage" v-model="body" placeholder="Sua mensagem"></textarea>
         <button :disabled="loading" class="btn btn-success" @click.prevent="sendMessage">
-          <pulse-loader :loading="loading" :color="'#FFF'" :size="'8px'" class="float-left"></pulse-loader>
-          Enviar</button>
-          
+            <pulse-loader :loading="loading" :color="'#FFF'" :size="'8px'" class="float-left"></pulse-loader>
+            Enviar
+        </button>
     </div>
 </template>
 
@@ -31,12 +28,12 @@ export default ({
 
         },
         sendMessage() {
-          if(!this.body || this.body.trim() == '' || this.loading){
-            return;
-          }
+            if (!this.body || this.body.trim() == '' || this.loading) {
+                return;
+            }
 
-        this.loading = true;
-        this.$store.dispatch("storeMessage", { body: this.body }).then(() => this.body = '').finally(() => this.loading = false)
+            this.loading = true;
+            this.$store.dispatch("storeMessage", { body: this.body }).then(() => this.body = '').finally(() => this.loading = false)
         }
     },
     components: {
@@ -44,6 +41,21 @@ export default ({
     }
 })
 </script>
+
 <style scoped>
-.float-left{float: left;}
+.float-left {
+    float: left;
+}
+
+textarea {
+    width: 700px;
+    border-radius: 1px solid;
+    padding: 6px;
+    max-width: 700px;
+    float: left;
+}
+
+button{
+    margin: 15px;
+}
 </style>
