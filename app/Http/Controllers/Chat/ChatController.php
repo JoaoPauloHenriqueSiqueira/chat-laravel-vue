@@ -11,7 +11,9 @@ class ChatController extends Controller
     //
     public function index()
     {
-        return view('chat.index');
+        return view(
+            'chat.index'
+        );
     }
 
     public function store(Request $request)
@@ -26,8 +28,7 @@ class ChatController extends Controller
 
     public function list(Message $message)
     {
-        $messages = $message->with('user')->orderBy('id',"DESC")->limit(50)->latest()->get();
+        $messages = $message->with('user')->orderBy('id', "DESC")->limit(50)->latest()->get();
         return response()->json($messages);
     }
-
 }

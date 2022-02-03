@@ -53,9 +53,11 @@ textarea {
     padding: 6px;
     max-width: 700px;
     float: left;
+    margin: 20px 0px;
+
 }
 
 button{
-    margin: 15px;
+    margin: 30px 10px;
 }
 </style>
