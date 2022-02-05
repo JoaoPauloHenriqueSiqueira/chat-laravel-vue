@@ -18,6 +18,8 @@ Route::middleware(['auth'])->group(
         Route::get('/chat', [App\Http\Controllers\Chat\ChatController::class, 'index'])->name("chat");
         Route::post('/chat/message', [App\Http\Controllers\Chat\ChatController::class, 'store'])->name("store");
         Route::get('/chat/messages', [App\Http\Controllers\Chat\ChatController::class, 'list'])->name("list");
+        Route::get('/profile', [App\Http\Controllers\User\UserController::class, 'index'])->name("profile");
+        Route::post('/profile', [App\Http\Controllers\User\UserController::class, 'update'])->name("update-profile");
     }
 );
 
